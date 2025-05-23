@@ -2,6 +2,7 @@ let facemesh;
 let video;
 let predictions = [];
 const points = [409, 270, 269, 267, 0, 37, 39, 40, 185, 61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291];
+const newPoints = [76, 77, 90, 180, 85, 16, 315, 404, 320, 307, 306, 408, 304, 303, 302, 11, 72, 73, 74, 184];
 
 function setup() {
   createCanvas(640, 480);
@@ -36,5 +37,12 @@ function draw() {
       vertex(x, y);
     }
     endShape(CLOSE);
+
+    // Draw lines connecting points in the new array
+    for (let i = 0; i < newPoints.length - 1; i++) {
+      const [x1, y1] = keypoints[newPoints[i]];
+      const [x2, y2] = keypoints[newPoints[i + 1]];
+      line(x1, y1, x2, y2);
+    }
   }
 }
